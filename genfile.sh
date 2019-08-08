@@ -94,5 +94,6 @@ else
 	echo -e "\nplease check the entries as follows:-\n"
 	tail -$n /etc/.netcloud/generators.dat
 	echo -e "\nGenerator file entry Done.......!!!!!"
+	echo "Hii"
 fi
 
