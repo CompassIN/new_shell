@@ -18,4 +18,5 @@ do
 	j=`expr $j + 1 `
 	echo $j
 	echo $j
+	echo hii
 done
