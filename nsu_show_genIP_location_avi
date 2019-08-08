@@ -1,0 +1,163 @@
+#!/bin/sh
+#Author: Abhisek
+#Requirement: This tool is required to find the exact location (Country, State and City) of all the generators that are used in the "TestRun, Scenario file, Generator file or anay particular IP
+
+Usage() {
+	echo -e "\e[0;31mnsu_show_genIP_location: mandatory option is missing\e[0m"
+	echo -e "\e[0;34mnsu_show_genIP_location -s <scenario file path> -f <generator file path> -i <generator IP> -t <Test_Run> -l <generator name list>\e[0m"
+	echo "Where:"
+	echo "-s is used to specify the scenario file path to fetch the generator names of any particular Scenario"
+	echo "-f is used to specify the generator file from where the list of IP's will be fetched"
+	echo "-i is used to specify any particular IP"
+	echo "-t is used to specify the TestRun number from where the Generator names will be fetched from its scenario"
+	echo "-l is used to specify the list of generator name stored in a file named list"
+	exit 1
+}
+
+if [ "$#" -eq 0 ]; then
+	Usage
+fi
+
+Headers="GenIP|GenName|Country|State|City"
+echo -e "\e[0;32m$Headers\e[0m"
+
+
+Gen_data()
+{
+	if [ ! -e $Scenario ];then
+		echo -e "\e[0;31mScenario is not present\e[0m"
+		exit 1
+	elif [ ! -e $Gen_file ];then
+		echo -e "\e[0;31mGenerator file is not present\e[0m"
+		exit 1
+	fi
+	Gen_Name=($(grep -w "^NS_GENERATOR" $Scenario |awk -F ' ' '{print $2}' ))
+	if [ "${#Gen_Name[@]}" -eq 0 ]; then
+		echo -e "\e[0;31mGenerators are not used in the given scenario\e[0m"
+	else
+		for (( j=0;j<${#Gen_Name[@]};j++ ))
+		do
+			Gen_IP=($(grep -w ${Gen_Name[$j]} $Gen_file|cut -d '|' -f 2))
+			#for (( i=0;i<${#Gen_IP[@]};i++ ))
+			#do
+			Country=$(curl -s ipinfo.io/$Gen_IP | grep -w "country" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+			State=$(curl -s ipinfo.io/$Gen_IP | grep -w "region" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+			City=$(curl -s ipinfo.io/$Gen_IP | grep -w "city" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+			echo "$Gen_IP|${Gen_Name[$j]}|$Country|$State|$City"
+			#done
+		done
+	fi
+}
+
+Runtest() 
+{
+	if [ ! -e $NS_WDIR/logs/TR$TestRun ];then
+		echo -e "\e[0;31mTestrun number is not present in $NS_WDIR\e[0m" 
+		exit 1
+	elif [ ! -e $Gen_file ];then
+                echo -e "\e[0;31mGenerator file is not present\e[0m"
+                exit 1
+	fi
+	Gen_Name=($(grep -w "^NS_GENERATOR" $NS_WDIR/logs/TR$TestRun/scenario |awk -F ' ' '{print $2}' ))
+	if [ "${#Gen_Name[@]}" -eq 0 ]; then
+                echo -e "\e[0;31mGenerators are not used in the given scenario\e[0m"
+        else
+                for (( j=0;j<${#Gen_Name[@]};j++ ))
+                do
+                        Gen_IP=($(grep -w ${Gen_Name[$j]} $Gen_file|cut -d '|' -f 2))
+                        Country=$(curl -s ipinfo.io/$Gen_IP | grep -w "country" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        State=$(curl -s ipinfo.io/$Gen_IP | grep -w "region" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        City=$(curl -s ipinfo.io/$Gen_IP | grep -w "city" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        echo "$Gen_IP|${Gen_Name[$j]}|$Country|$State|$City"
+                done
+        fi
+}
+
+Generator_file() {
+
+if [ ! -e $Gen_file ];then
+	echo -e "\e[0;31mGenerator file is not present\e[0m" 
+	exit 1
+fi
+	Gen_Name=($(cut -d '|' -f 1 $Gen_file | grep -v ^#))
+	if [ "${#Gen_Name[@]}" -eq 0 ]; then
+                echo -e "\e[0;31mGenerators are not used in the given scenario\e[0m"
+        else
+                for (( j=0;j<${#Gen_Name[@]};j++ ))
+                do
+                        Gen_IP=($(grep -w ${Gen_Name[$j]} $Gen_file|cut -d '|' -f 2))
+                        Country=$(curl -s ipinfo.io/$Gen_IP | grep -w "country" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        State=$(curl -s ipinfo.io/$Gen_IP | grep -w "region" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        City=$(curl -s ipinfo.io/$Gen_IP | grep -w "city" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        echo "$Gen_IP|${Gen_Name[$j]}|$Country|$State|$City"
+                done
+        fi
+}
+
+given_ip() {
+	Gen_IP=$ip
+	x=`curl -s ipinfo.io/$ip | grep  -q "Wrong ip"` 
+	if [ $? == 0 ];then 
+		echo -e "\e[0;31mPlease provide a valid IP address\e[0m"
+		exit 1
+	fi
+	Country=$(curl -s ipinfo.io/$Gen_IP | grep -w "country" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+	State=$(curl -s ipinfo.io/$Gen_IP | grep -w "region" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+	City=$(curl -s ipinfo.io/$Gen_IP | grep -w "city" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+	echo "$Gen_IP|XXXX|$Country|$State|$City"
+
+}
+
+gen_list() {
+
+	if [ ! -e $file ];then
+        	echo -e "\e[0;31m $file file is not present\e[0m" 
+	        exit 1
+	elif [ ! -e $Gen_file ];then
+                echo -e "\e[0;31mGenerator file is not present\e[0m"
+                exit 1
+	fi
+        Gen_Name=($(cat $file))
+        if [ "${#Gen_Name[@]}" -eq 0 ]; then
+                echo -e "\e[0;31mlist is empty\e[0m"
+        else
+                for (( j=0;j<${#Gen_Name[@]};j++ ))
+                do
+                        Gen_IP=($(grep -w ${Gen_Name[$j]} $Gen_file|cut -d '|' -f 2))
+                        Country=$(curl -s ipinfo.io/$Gen_IP | grep -w "country" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        State=$(curl -s ipinfo.io/$Gen_IP | grep -w "region" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        City=$(curl -s ipinfo.io/$Gen_IP | grep -w "city" | cut -d " " -f 4 |awk -F '"' '{print $2}')
+                        echo "$Gen_IP|${Gen_Name[$j]}|$Country|$State|$City"
+                done
+        fi
+
+}
+
+while getopts s:f:t:i:l: arg
+do
+	case $arg in
+		s) Scenario=$NS_WDIR/scenarios/$OPTARG ;;
+		f) Gen_file=/etc/.netcloud/$OPTARG ;;
+		t) TestRun=$OPTARG ;;
+		i) ip=$OPTARG ;;
+		l) file=$OPTARG ;;
+		*) Usage ;;
+
+	esac
+done
+
+if [ ! -z $Scenario ] && [ ! -z $Gen_file ];then
+   	Gen_data
+elif [ ! -z $TestRun ] && [ ! -z $Gen_file ];then
+	Runtest
+elif [ ! -z $file ] && [ ! -z $Gen_file ];then
+	gen_list
+elif [ ! -z $Gen_file ];then
+	Generator_file
+elif [ ! -z $ip ];then
+	given_ip
+else
+	echo -e "\e[0;31m Invalid Argument given\e[0m" 
+	Usage
+fi
+

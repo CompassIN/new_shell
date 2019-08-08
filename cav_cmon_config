@@ -1,0 +1,129 @@
+#!/bin/sh
+Usage() {
+        echo -e "\e[1m\e[31mcav_cmon_config: mandatory options are missing\e[0m"
+        echo -e "\e[1mUsage:  \e[32mcav_cmon_config -n <number of cmon to run> -m <NDC IP> -P <ndc ports> -c <Cav agent Ports> -p <jmx Ports> -t <Tier Name>\e[0m"
+        echo "Where:"
+        echo "-n used to run number of Cmons"
+        echo "-m used to provide the NDC IP"
+	echo "-P used to provide ndc port"
+	echo "-c used to input the CAV_MON_AGENT_OPTS port"
+	echo "-p used to input the jmx port"
+	echo "-t used to input the Tier Name :: Ex:-- ABC-Test"
+        exit 1
+
+}
+
+if [ "$#" -eq 0 ]; then
+        Usage
+fi
+
+check_inp()
+{
+if [[ ! -n ${Number//[0-9]/} ]]
+then
+	if [[ ! -n ${NDC_Port//[0-9]/} ]]
+	then
+		if [[ ! -n ${CAV_OPTS//[0-9]/} ]]
+		then
+			if [[ ! -n ${Port//[0-9]/} ]]
+			then
+			create_mon
+			else
+			echo "Wrong JMX port, Integer value expected!!"
+       		fi
+		else
+		echo "Wrong Cav mon port,Integer expected!!"
+		fi
+		
+	else	
+	echo "Wrong NDC port, Interger Expected!!"
+	fi
+else
+echo "Wrong Value given..Integer value expected!!"
+fi
+
+}
+
+
+create_mon()
+{
+
+for (( j=1;j<=$Number;j++ ))
+do
+
+if [ -e "/home/cavisson/monitors-$j" ]
+then
+echo "monitors-$j exists,Hence Ignoring"
+else
+
+###################CHECK LATEST VERSION OF CMON FROM MONITOR DIR############
+for i in `ls -l /home/cavisson/monitors/cmon.* | awk '{print $9}'`;do echo $i|cut -d '.' -f 2-5 | tr -d '.' >> /tmp/build_tmp;done
+if [ `cat /tmp/build_tmp | sort -n | uniq | tail -1 | wc -c` -eq 8 ];then
+
+cmon_file=$(ls -ltr /home/cavisson/monitors/cmon.* | grep `cat /tmp/build_tmp | sort -n | uniq | tail -1 | sed 's/...$/.&/' | cut -d '.' -f 2 ` | awk '{print $9}')
+else 
+cmon_file=$(ls -ltr /home/cavisson/monitors/cmon.* | grep `cat /tmp/build_tmp | sort -n | uniq | tail -1 | sed 's/..$/.&/' | cut -d '.' -f 2 ` | awk '{print $9}')
+fi
+#################################################################
+
+mkdir /home/cavisson/monitors-$j
+cp $cmon_file /home/cavisson/monitors-$j
+tar -xzf /home/cavisson/monitors-$j/cmon.* -C /home/cavisson/monitors-$j
+
+echo "Controller=$Machine:$NDC_Port"  > /home/cavisson/monitors-$j/sys/cmon.env 
+echo CAV_MON_AGENT_OPTS=\"-p $CAV_OPTS\" >> /home/cavisson/monitors-$j/sys/cmon.env
+echo CMON_OPTS=\"-Xms512m -Xmx512m -Dcom.sun.management.jmxremote.port=$Port -Dcom.sun.management.jmxremote.authenticate=false -Djffi.boot.library.path=/home/cavisson/monitors-$j/nf/nfagent/vendor/jruby/lib/jni -Xbootclasspath/a:/home/cavisson/monitors-$j/nf/nfagent/vendor/jruby/lib/jruby.jar -Djruby.home=/home/cavisson/monitors-$j/nf/nfagent/vendor/jruby -Djruby.lib=/home/cavisson/monitors-$j/nf/nfagent/vendor/jruby/lib -Djruby.script=jruby -Djruby.shell=/bin/sh\" >> /home/cavisson/monitors-$j/sys/cmon.env
+echo CLASSPATH='$'CLASSPATH:/home/cavisson/monitors-$j/lib/jruby.jar:. >> /home/cavisson/monitors-$j/sys/cmon.env
+echo export CMON_OPTS=\"'$'CMON_OPTS -javaagent:/home/cavisson/netdiagnostics/lib/ndmain.jar=time,ndAgentJar=/home/cavisson/netdiagnostics/lib/ndagent-with-dep.jar,ndHome=/home/cavisson/netdiagnostics,agentId=1 -Dcom.sun.management.jmxremote -Dcom.sun.management.jmxremote.port=$Port -Dcom.sun.management.jmxremote.ssl=false -Dcom.sun.management.jmxremote.authenticate=false -Djava.rmi.server.hostname=0.0.0.0\" >> /home/cavisson/monitors-$j/sys/cmon.env
+echo Tier="$Tier"-Test"$j" >> /home/cavisson/monitors-$j/sys/cmon.env
+
+
+echo -n "Deploying CMON.Please wait";inc=0;while [ $inc != 5 ]; do echo -n '.'; sleep 0.2; inc=`expr $inc + 1`;done;sleep 1;echo -e "\n"
+
+chown -R cavisson. /home/cavisson/monitors-*
+/home/cavisson/monitors-$j/bin/cmon restart > /tmp/cmon 
+
+
+if  grep -q "cmon is started with pid" /tmp/cmon
+then
+	echo -e "monitor-$j cmon started with PID $(grep "cmon is started with pid" /tmp/cmon | awk -F '(' '{print $2}' | cut -d ')' -f 1)\n"
+else
+	cat /tmp/cmon  > /tmp/cmon_error_monitor-$j
+	echo -e "monitor-$j cmon couldn't start.check error log at /tmp/cmon_error_monitor-$j\n"
+fi
+
+((CAV_OPTS++))
+((Port++))
+fi
+done
+
+echo "All cmon's deployed successfully"
+rm -rf /tmp/build_tmp
+
+}
+
+
+while getopts n:m:P:c:p:t: arg
+do
+        case $arg in
+		n) Number=$OPTARG ;;
+                m) Machine=$OPTARG ;;
+                P) NDC_Port=$OPTARG ;;
+		c) CAV_OPTS=$OPTARG ;;
+                p) Port=$OPTARG ;;
+                t) Tier=$OPTARG ;;
+                *) Usage ;;
+
+        esac
+done
+
+if [ ! -z $Number ] && [ ! -z $Machine ] && [ ! -z $NDC_Port ] && [ ! -z $CAV_OPTS ] && [ ! -z $Port ] && [ ! -z $Tier ];then
+check_inp
+
+rm -rf /tmp/cmon
+
+else
+        echo -e "\e[0;31m Invalid Argument given\e[0m" 
+        Usage
+
+fi        

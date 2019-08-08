@@ -1,0 +1,24 @@
+#!/bin/sh
+
+
+
+if [ -f index.html ]
+
+then
+	rm -f index*
+fi
+#echo -e "\nPlease enter the URL:-\n"
+#read web
+wget -O index.html  -q $1
+
+if [ -z "$out" ]
+then
+	echo "OOPS!!String not found.."
+else 
+	echo -e "$out\n"
+fi
+exit $?
+
+
+abhisek
+cavisson

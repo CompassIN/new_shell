@@ -1,0 +1,15 @@
+#Sudo rules for service account discadm
+
+Cmnd_Alias   DMIDECODE=/usr/sbin/dmidecode
+Cmnd_Alias   ETHTOOL=/sbin/ethtool eth[0-9]
+Cmnd_Alias   HWINFO=/usr/sbin/hwinfo --bios
+Cmnd_Alias   LSOF=/usr/sbin/lsof -l -n -P -F ptPTn -i
+Cmnd_Alias   NETSTAT=/bin/netstat -aneep --tcp --udp
+Cmnd_Alias   IPTABLES=/sbin/iptables -L
+Cmnd_Alias   LS_SUDO_FILES=/usr/bin/ls /etc/sudoers.d
+Cmnd_Alias   CAT_SUDO_RULES=/usr/bin/cat /etc/sudoers.d/*
+Cmnd_Alias   CAT_LIMITS=/usr/bin/cat /etc/security/limits.d/*
+Cmnd_Alias   FDISK=/usr/sbin/fdisk -l
+
+
+username ALL = NOPASSWD:DMIDECODE, ETHTOOL, HWINFO, LSOF, NETSTAT, IPTABLES, LS_SUDO_FILES, CAT_SUDO_RULES, CAT_LIMITS, FDISK

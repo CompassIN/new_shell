@@ -1,0 +1,6 @@
+<Connector port="4435" protocol="HTTP/1.1" SSLEnabled="true"
+               maxThreads="150" scheme="https" secure="true"
+               clientAuth="false" keystoreFile="/home/netstorm/work/cert/cavissonwc.ks" keystorePass="netstorm"
+               keyAlias="cavisson-server" sslProtocol="TLS" disableUploadTimeout="true" compression="on" compressionMinSize="10000"
+               noCompressionUserAgents="gozilla, traviata"
+               compressableMimeType="text/html,text/xml"/>
