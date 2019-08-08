@@ -17,4 +17,5 @@ do
         sed -i -e '/redirectPort=/r list.txt' $dir/conf/server.xml.bak
 	j=`expr $j + 1 `
 	echo $j
+	echo $j
 done
