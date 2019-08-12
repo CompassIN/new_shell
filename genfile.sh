@@ -95,5 +95,6 @@ else
 	tail -$n /etc/.netcloud/generators.dat
 	echo -e "\nGenerator file entry Done.......!!!!!"
 	echo "Hii"
+	echo "Bye"
 fi
 
