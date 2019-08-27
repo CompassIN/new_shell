@@ -141,7 +141,6 @@ do
 #	?) usage;;
 	esac
 done
-
 if [ ! -z $START_TR ] && [ ! -z $END_TR ] && [ -z $TR ] && [ -z $flag ] 
 #if [ ! -z $START_TR ] && [ ! -z $END_TR ] && [ $# -eq 2 ] 
 then
