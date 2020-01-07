@@ -1,0 +1,76 @@
+#!/bin/sh
+#Author: Abhisek
+#Requirement:- This is the requirement to check the list of generators which are whitelisted for client.
+
+Usage() {
+	echo -e "\e[0;31mnsu_check_whitelist: mandatory option is missing\e[0m"
+	echo -e "\e[0;34mnsu_check_whitelist -f <file name containging IPs> -i <generator IP> -u <URL of the host>\e[0m"
+	echo "Where:"
+	echo "-f is used to specify the generator IP inside a file from where the list of IP's will be fetched"
+	echo "-i is used to specify any particular IP"
+	echo "-u is used to provide the URL for which the whitelisting need to be checked"
+	exit 1
+}
+
+if [ "$#" -eq 0 ]; then
+	Usage
+fi
+
+
+given_ip() {
+	Gen_IP=$ip
+	x=`curl -s ipinfo.io/$ip | grep  -q "Wrong ip"` 
+	if [ $? == 0 ];then 
+		echo -e "\e[0;31mPlease provide a valid IP address\e[0m"
+		exit 1
+	fi
+	a=`nsu_server_admin -s $ip -c "wget -S $URL" | grep Forbidden`
+	if [ $? == 0 ];then
+		echo -e "\e[0;31m$ip is not whitelisted for the host $URL\e[0m"
+
+	else
+		echo -e "\e[0;32m$ip is whitelisted IP\e[0m"
+	fi
+}
+
+gen_file() {
+
+	if [ ! -e $file ];then
+        	echo -e "\e[0;31m $file file is not present\e[0m" 
+	        exit 1
+	fi
+        Gen_Name=($(cat $file))
+        if [ "${#Gen_Name[@]}" -eq 0 ]; then
+                echo -e "\e[0;31mlist is empty\e[0m"
+        else
+                for (( j=0;j<${#Gen_Name[@]};j++ ))
+                do
+			a=`nsu_server_admin -s ${Gen_Name[$j]} -c "wget -S $URL" | grep Forbidden`
+			if [ $? == 0 ];then
+				echo -e "\e[0;31m${Gen_Name[$j]} is not whitelisted for the host $URL\e[0m"
+			fi
+				
+                done
+        fi
+
+}
+
+while getopts i:f:u: arg
+do
+	case $arg in
+		i) ip=$OPTARG ;;
+		f) file=$OPTARG ;;
+		u) URL=$OPTARG ;;	
+		*) Usage ;;
+
+	esac
+done
+
+if [ ! -z $file ] && [ ! -z $URL ];then
+	gen_file
+elif [ ! -z $ip ] && [ ! -z $URL ];then
+	given_ip
+else
+	echo -e "\e[0;31m Invalid Argument given\e[0m" 
+	Usage
+fi

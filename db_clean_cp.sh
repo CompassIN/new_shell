@@ -158,5 +158,3 @@ else
 echo -e "\033[0;31mnsi_clean_database:mandatory fields are missing\e[0m"
 usage
 fi
-
-

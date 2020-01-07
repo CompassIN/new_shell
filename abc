@@ -1,0 +1,39 @@
+P1 Bugs:--
+
+Bug 73634 - Need to do Run-time changes during Duration phase || Advance Scenario >> Rajat need to update
+Bug 73740 - Unable to login to controller and guest user >> Sandhay
+Bug 73751 - Postgresql is not starting >> Sandhya
+Bug 73761 - During the test, we are observing user drop >> Sandhya
+Bug 73762 - Ramp up is not been observed >> Abhisek
+Bug 73767 - Page dump is not been seen. >> Sandhya
+Bug 73793 - Need generators for the production test (05/09/2019) >> Sourabh, mark it as duplicate
+Bug 73837 - Do not copy file to generators if file size and timestamp are same in generator >> Rajat
+Bug 73891 - load generation is very low than expected on around 20 generators out of 60 >> Sandhya
+Bug 73897 - 1 generator removed by client team because of High response time CC-E-FL-Orlando-IC-59  >> Sandhya
+Bug 73901 - Three Generators were discarded because of vendor side issue of network outage >> Praveen sir
+Bug 73924 - Generator not able to achieve desired load page >> Abhisek
+Bug 74566 - Common Generators given to both Mobile and Webstore performance team  >> Rajat
+Bug 74581 - Failed to apply RTC to decrease load || 184.105.48.8 >> Rajat
+Bug 74608 - Getting High Response Time for 3 generators >> Rajdeep/Abhisek
+Bug 74638 - Netclould | Test failed to start due to generators timeout issue >> Sandhya
+Bug 74639 - Netclould | Test failed to start due to generators timeout issue  >> Sandhya
+Bug 74687 - Netcloud | Test failed to start due to generator issue >> Sandhya
+
+
+P2 Bugs:--
+
+Bug 73777 - High load Avg. due to process IO stats monitor >>Sandhya need to change the priority
+Bug 74612 - Need information on Server side 503 error >> Abhisek
+Bug 73546 - Unable to start the test || 209.51.175.198:8004 || BLOCKED >> Gyan need to take update
+Bug 73663 - Generators were getting failed during load test in halfway || 69.61.127.77:8002 >> Sandhya need to update
+Bug 73778 - High Load average was observed in Lorain Machine and impacting Tx Response time (Many test are running) >>  Sandhya need to update
+Bug 73886 - Three Generator (CC-W-CA-Fremont-HE-235,CC-E-TX-Houston-OP-210,CC-E-NY-NewJersey-NCW-127) got killed due to core by calling method "in xmlStrncat__internal_alias" by method "xmlStrncat__internal_alias" >> Jyoti
+Bug 73922 - 4 generators got discarded in AKAMAI due to delay in progress report >> Rajat need to mark as duplicate
+Bug 74050 - Core | Getting core dump while running a SSL BIOS script in kohls POC. >> Abhisek need to take update from Devender jain
+Bug 74356 - Test Stopped without completing the execution >> Abhisek will take update from Devender jain
+Bug 74382 - Getting spike in TPS/PVS when getting high response time and failure (5xx) >> Sandhya need to take update from QA, and update the bug
+Bug 74409 - server CC-W-CA-Fremont-HE-238 was taking less load because of attack in postgres. Getting expected load after shuting down DB. >> Gyan need to update 
+
+Bug 74440 - VP-E-FL-MO-RDP-74 server was not taking load. it was not white-listed from akamai >> Abhisek need to update
+Bug 74618 - NC Test stopped on controller machine 69.61.127.67. Got error "Broken Pipe" on consol.  >> Sandhya need to check and mark if duplicate
+
