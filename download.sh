@@ -13,7 +13,7 @@ wget -O index.html  -q $1
 #out=`grep -m 1 "release" index.html | cut -c 10-12`
 #FOR Cavisson
 out=`grep -m 1 performance index.html | cut -d '=' -f 1`
-echo "cavisson"
+echo "cavisson abc"
 if [ -z "$out" ]
 then
 	echo "OOPS!!String not found.."
