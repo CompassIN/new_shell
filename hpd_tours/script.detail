@@ -1,0 +1,135 @@
+--Page index_html
+CMP_RAT=0/22
+COOKIE=a;
+----
+---- TX_RAT:0 RX_RAT:10
+GET /tours/Merc10-dev/images/banner_animated.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/Merc10-dev/images/sun_swede.gif HTTP/1.1
+Host: 127.0.0.1
+Cookie: a=test
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/Merc10-dev/images/login.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/banner_merctur.jpg HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+--Page login
+CMP_RAT=0/14
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/Merc10-dev/images/flights.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/Merc10-dev/images/home.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/Merc10-dev/images/signoff.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/vep/images/velocigen.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+--Page reservation
+CMP_RAT=0/28
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/Merc10-dev/images/splash_Findflight.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/continue.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+--Page findflight
+CMP_RAT=0/22
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/splash_Searchresults.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/startover.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+--Page findflight_2
+CMP_RAT=0/22
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/splash_creditcard.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/purchaseflight.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+--Page findflight_3
+CMP_RAT=8/18
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/splash_flightconfirm.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+---- TX_RAT:0 RX_RAT:0
+GET /tours/images/bookanother.gif HTTP/1.1
+Host: 127.0.0.1
+Accept-Language: en-us, en;q=0.50
+Accept-Charset: ISO-8859-1, utf-8;q=0.66, *;q=0.66
+
+----
+--Page welcome
+CMP_RAT=0/21
+----

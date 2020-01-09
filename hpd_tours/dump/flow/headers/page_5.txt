@@ -1,0 +1,142 @@
+--Request 
+GET http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8
+Upgrade-Insecure-Requests: 1
+Referer: http://10.10.30.13:85/cgi-bin/findflight?depart=Acapulco&departDate=10-04-2016&arrive=Acapulco&returnDate=10-05-2016&numPassengers=1&seatPref=None&seatType=Coach&findFlights.x=58&findFlights.y=22&findFlights=Submit
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-type: text/html
+Content-length: 0000004304
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/banner_animated.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 16522
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/sun_swede.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 4125
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/flights.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 1519
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/home.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 1268
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/Merc10-dev/images/signoff.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 1260
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/images/splash_creditcard.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 2707
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/images/startover.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 1455
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/images/purchaseflight.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 1541
+Content-Type: image/gif
+----
+--Request 
+GET http://10.10.30.13:85/tours/vep/images/velocigen.gif
+Cookie: akaau=6wdFKUK0vjNaiiVs4ZaiPVELLJLnvdVRHnaLEPG/yP5ZV3ZEBWhB0XA4Wt5Ab6rq
+Accept: image/webp,image/*,*/*;q=0.8
+Referer: http://10.10.30.13:85/cgi-bin/findflight?outboundFlight=button0&hidden_outboundFlight_button0=000%7C0%7C10-04-2016&hidden_outboundFlight_button1=001%7C0%7C10-04-2016&hidden_outboundFlight_button2=002%7C0%7C10-04-2016&hidden_outboundFlight_button3=003%7C0%7C10-04-2016&numPassengers=1&advanceDiscount=&seatType=Coach&seatPref=None&reserveFlights.x=57&reserveFlights.y=7
+User-Agent: Mozilla/4.0 (Windows; U; Windows NT 6.1; en-US; rv:1.9.2.24) Gecko/20111103 Firefox/3.6.24
+Accept-Encoding: gzip, deflate
+Accept-Language: en-us
+----
+--Response 
+Connection: Keep-Alive
+Content-Length: 2018
+Content-Type: image/gif
+----
+
