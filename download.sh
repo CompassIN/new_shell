@@ -1,7 +1,5 @@
 #!/bin/sh
 
-
-
 if [ -f index.html ]
 
 then
@@ -15,6 +13,7 @@ wget -O index.html  -q $1
 #out=`grep -m 1 "release" index.html | cut -c 10-12`
 #FOR Cavisson
 out=`grep -m 1 performance index.html | cut -d '=' -f 1`
+echo "cavisson"
 
 if [ -z "$out" ]
 then
