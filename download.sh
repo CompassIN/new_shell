@@ -14,7 +14,6 @@ wget -O index.html  -q $1
 #FOR Cavisson
 out=`grep -m 1 performance index.html | cut -d '=' -f 1`
 echo "cavisson"
-
 if [ -z "$out" ]
 then
 	echo "OOPS!!String not found.."
